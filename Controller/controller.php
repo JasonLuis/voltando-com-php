@@ -25,6 +25,11 @@ class Controller {
         }*/
         return $tasks;
     }
+
+    public function saveTask($description) {
+        $task = $this->repository->saveTask($description);
+        return $task;
+    }
 }
 
 ?>

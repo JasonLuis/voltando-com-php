@@ -24,5 +24,16 @@ class Repository {
 
         return $tasks;
     }
+
+    public function saveTask($description) {
+        $query = "INSERT INTO tasks (description, dateCreated) VALUES (:description, :dateCreated)";
+        $stmt = $this->conn->prepare($query);
+        // 
+        $stmt->bindParam(':descricao', $description);
+        $dateCreated = date('Y-m-d');
+        $stmt->bindParam(':dateCreated', $dateCreated);
+
+        return $stmt->execute();
+    }
 }
 ?>

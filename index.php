@@ -3,6 +3,11 @@ include_once "./Controller/controller.php";
 
 $controller = new Controller();
 
+if(isset($_POST["input-task"])) {
+    $task_description = $_POST["input-task"];
+    $controller->saveTask($task_description);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -16,9 +21,17 @@ $controller = new Controller();
 </head>
 
 <body>
-
     <div class="container">
-        <table class="table">
+        <div class="form mt-5">
+            <form method="POST" action="">
+                <div class="form-group">
+                    <label for="input-task">Descrição da Tarefa</label>
+                    <input type="text" class="form-control mt-1" id="input-task" name="input-task" aria-describedby="taskHelp" placeholder="Enter task">
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Submit</button>
+            </form>
+        </div>
+        <table class="table mt-5">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
